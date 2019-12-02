@@ -4,6 +4,8 @@ var app = express()
 var routes = require('./routes/routes')
 var bodyParser = require('body-parser')
 
+app.set('view engine','pug')
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
     extended: false
@@ -19,7 +21,9 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-    res.send('Hello '+ req.nome);
+    res.render('index',{
+        message: 'Hello world com pug'
+    })
 });
 
 app.get('/world', (req, res) => {
