@@ -6,10 +6,8 @@ router.use((req, res, next) => {
     next()
 });
 
-router.get('/',(req,res)=>{
-    res.json({
-        message:'Hello World'
-    })
+router.get('/',(req,res,next)=>{
+    next(new Error('custom error')) //simulando um erro
 })
 //criando uma rota com expressao regular
 router.get('/a?r',(req,res)=>{

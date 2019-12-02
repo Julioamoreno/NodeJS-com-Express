@@ -26,6 +26,12 @@ app.get('/world', (req, res) => {
     res.send('World');
 });
 
+//Centralizando os erros
+app.use((err, req, res, next) => {
+    res.status(500).json({
+        message:   'Ocorreu um Erro'
+    })
+});
 
 app.listen(3000, () => {
     console.log('App listening on port 3000!');
