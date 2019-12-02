@@ -24,4 +24,11 @@ router.post('/body',(req,res)=>{
     res.json(req.body.nome)
 })
 
+router.get('/res',(req,res)=>{
+    res.status(201).json({   //mudando valor do status response
+        nome: 'julio', 
+        sobrenome: 'Armando'
+    });
+})
+
 module.exports = router
