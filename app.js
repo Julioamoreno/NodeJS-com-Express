@@ -1,4 +1,5 @@
 var express = require('express')
+var path = require('path')
 var app = express()
 var routes = require('./routes/routes')
 var bodyParser = require('body-parser')
@@ -9,6 +10,7 @@ app.use(bodyParser.urlencoded({
 }))
 
 app.use('/hello',routes)
+app.use('/public', express.static(path.join(__dirname,'public')))
 
 app.get('/', (req, res) => {
     res.send('Hello world');
