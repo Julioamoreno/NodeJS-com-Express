@@ -1,6 +1,10 @@
 var express = require('express')
 var router = express.Router()
 
+router.use((req, res, next) => {
+    console.log('Eu sou middleware do router')
+    next()
+});
 
 router.get('/',(req,res)=>{
     res.json({

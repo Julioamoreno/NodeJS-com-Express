@@ -12,8 +12,14 @@ app.use(bodyParser.urlencoded({
 app.use('/hello',routes)
 app.use('/public', express.static(path.join(__dirname,'public')))
 
+app.use((req, res, next) => {
+    req.nome = 'julio'
+    console.log('Eu sou middleware')
+    next()
+});
+
 app.get('/', (req, res) => {
-    res.send('Hello world');
+    res.send('Hello '+ req.nome);
 });
 
 app.get('/world', (req, res) => {
