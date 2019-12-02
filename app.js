@@ -1,14 +1,17 @@
 var express = require('express')
-var http = require('http')
 var app = express()
+var routes = require('./routes/routes')
+
+app.use('/hello',routes)
 
 app.get('/', (req, res) => {
     res.send('Hello world');
 });
 
-// http.createServer(app).listen(3000,() => {
-//     console.log("Rodando na porta 3000")
-// })
+app.get('/world', (req, res) => {
+    res.send('World');
+});
+
 
 app.listen(3000, () => {
     console.log('App listening on port 3000!');
